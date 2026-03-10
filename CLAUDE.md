@@ -8,7 +8,7 @@ This is an AI-DevKit Vibe Coding Workshop repository for building Databricks sol
 
 **All generated code must be placed in the `src/` folder.**
 
-When creating new files:
+When creating new files (within the `usecases/<usecase>/bundle` directory):
 - Python modules: `src/*.py` or `src/<module_name>/*.py`
 - Notebooks: `src/notebooks/*.py` or `src/notebooks/*.ipynb`
 - SQL files: `src/sql/*.sql`
@@ -28,5 +28,8 @@ src/
 
 1. **Use case context**: Read `usecases/<name>/context.md` for business and data context before implementing.
 2. **Follow skills**: Reference `usecases/<name>/skills.md` for implementation guidance.
-3. **Databricks patterns**: Follow Databricks best practices for Unity Catalog, Delta Lake, and PySpark.
-4. **Modular code**: Create reusable functions and modules within the `src/` directory structure.
+3. **Databricks patterns**: use Databricks skills to build Databricks components.
+4. **Deployable Artifacts**: the `src/` output must be a configurable (without hardcoded variables and values) Databricks Asset Bundle.
+5. **Modular code**: Create reusable functions and modules within the `src/` directory structure.
+6. **Context Lineage**: Every `tasks.md` file must contain references to the `context.md` and `skills.md` files within the folder where the `tasks.md` is created.
+7. **Serverless Compute**: Every Databricks resource must use the Serverless compute type.

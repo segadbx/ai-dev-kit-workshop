@@ -73,17 +73,13 @@ At a high level:
 ```text
 .
 ├── README.md               # You are here
-├── common/
-│   ├── PROMPTING_GUIDE.md  # Vibe coding tips & examples
-│   └── TROUBLESHOOTING.md  # Common issues & fixes
 ├── env/
 │   ├── requirements.txt    # Optional Python deps (if running locally)
 │   └── bootstrap.sh        # Optional setup helper (if provided)
 └── usecases/
     ├── <usecase-1>/
     │   ├── context.md      # Business + data context for this use case
-    │   ├── skill.md        # Instructions for your coding agent (prompts by stage)
-    │   └── tasks.md        # Concrete tasks to complete during the workshop
+    │   └── skill.md        # Instructions for your coding agent (prompts by stage)
     ├── <usecase-2>/
     │   └── ...
     └── <usecase-n>/
@@ -117,14 +113,24 @@ pip install -r env/requirements.txt
 
 If you prefer to run everything in Databricks notebooks, you can skip this and just treat the repo as source files that your assistant edits.
 
-### 5.3. Configure your AI coding assistant
+### 5.3. Install AI-Dev-Kit
+> Note: Check the latest instruction in the official [documentation](https://github.com/databricks-solutions/ai-dev-kit/tree/main?tab=readme-ov-file#install-in-existing-project).
+
+#### Mac / Linux
+Basic installation (uses DEFAULT profile, project scope)
+
+```
+bash <(curl -sL https://raw.githubusercontent.com/databricks-solutions/ai-dev-kit/main/install.sh)
+```
+
+
+### 5.4. Configure your AI coding assistant
 
 Typical steps (details vary by tool):
 
 1. Point the assistant at the **root of this repo** so it can see:
   - `usecases/**/context.md`
   - `usecases/**/skill.md`
-  - `usecases/**/tasks.md`
 2. Configure any Databricks integrations (if supported by your tool):
   - Workspace URL, PAT/SSO, cluster/warehouse to use.
 3. Test with a simple question, e.g.:
@@ -150,8 +156,10 @@ For each use case, you’ll follow the same pattern:
    You can:
   - Paste sections of `skill.md` into your assistant, or
   - Ask your assistant to **“adopt”** the skill file as context and follow its steps.
-4. **Follow the tasks**
-  Open `tasks.md` for a list of concrete exercises. For each task:
+4. **Follow the tasks (Optional)**
+  > Note: Ask the tool to build the `tasks.md` based on the `context.md` and `skills.md`.
+
+  Create `tasks.md` for a list of concrete exercises. For each task:
   - Start by telling your assistant *what you want*, referencing the task.
   - Let it propose code/changes.
   - Run/validate, then iterate.
@@ -169,7 +177,7 @@ Throughout the workshop, we want you to **lean on the AI agent**:
 
 1. **Describe**
   - Explain the goal in natural language.
-  - Point to `context.md`, `skill.md`, and `tasks.md` so it can use them.
+  - Point to `context.md`, `skill.md` so it can use them.
 2. **Generate**
   - Let the assistant propose code, notebooks, or file edits.
   - Ask it to explain what it changed.

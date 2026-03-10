@@ -1,3 +1,26 @@
+# AI-Dev-Kit
+.ai-dev-kit/
+.mcp.json
+
+# Claude
+.claude/
+
+# Cursor
+.cursor/
+
+# Agentic Coding Tools Outputs
+/usecases/**/src/
+/usecases/**/tasks.md
+/src/
+
+# Databricks
+databricks.yml
+.databricks-resources.json
+
+# Resources
+resources/
+
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[codz]
